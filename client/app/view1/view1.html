@@ -1,0 +1,209 @@
+
+<nav class="navbar navbar-default nav1">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<h1> ID Coin </h1>
+		</div>
+	</div>
+</nav>
+
+
+<div class="container">
+
+	<div class="row">
+		<h3> Balance </h3>
+			<div class= "col-sm-6">
+				<table class=table>
+   				<tr>
+   					<td> Accocount Address: </td>
+   					<td> <input type="text" ng-model="accountAddress"/> </td>
+	    		</tr>
+	    		<tr>
+	    			<td> <button type="button" ng-click="checkEtherBalance(accountAddress)"> Check </button> </td>
+	    		</tr>
+	    	</table>
+	    </div>
+
+	    <div class= "col-sm-6">
+	    	<div> {{etherBalance}}</div>
+			<div> {{coinBalance}}</div>
+	    </div>
+    </div>
+
+    <!-- Mint Token -->
+	<div class="row">
+		<h3> Mint Token </h3>
+			<table class="table">
+				<tr> 
+					<td> Mint To: </td>
+					<td> <input type="text" ng-model="mintToAddress" /></td>
+				</tr>
+
+				<tr> 
+					<td> Amount: </td>
+					<td> <input type="text" ng-model="mintAmount" /></td>
+				</tr>
+
+				<tr> 
+					<td> From: </td>
+					<td> Owner </td>
+				</tr>
+
+				<tr> 
+					<td> Password: </td>
+					<td> <input type="password" ng-model="mintPassword" /></td>
+				</tr>
+
+				<tr>
+					<td> <button type="button" onClick="mintToken(mintToAddress,mintAmount,mintPassword">Mint Token </button>
+				</tr>
+
+			</table>
+	</div> <!-- row ends here -->
+
+	<!-- Transfer Coin -->
+	<div class="row">
+        <h3> Transfer IDC </h3>
+			<table class="table">
+				<tr> 
+					<td> To: </td>
+					<td> <input type="text" ng-model="transferToAddr" /></td>
+				</tr>
+
+				<tr> 
+					<td> Amount: </td>
+					<td> <input type="text" ng-model="transferAmount" /></td>
+				</tr>
+
+				<tr> 
+					<td> From: </td>
+					<td>  <input type="text" ng-model="transferFromAddr" /></td>
+				</tr>
+
+				<tr> 
+					<td> Password: </td>
+					<td> <input type="password" ng-model="transferPassword" /></td>
+				</tr>
+
+				<tr>
+					<td> <button type="button" ng-click="transferCoin(transferToAddr,transferAmount,transferFromAddr,transferPassword);">Transfer </button>
+					</td>
+				</tr>
+			</table>		
+	</div> <!-- row ends here -->
+
+	<!-- Set Prices -->
+    <div class="row">
+		<h3> Set Prices </h3>
+			<table class="table">
+				<tr> 
+					<td> Sell Price: </td>
+					<td> <input type="text" id="txtSetSellPrice" /></td>
+				</tr>
+
+				<tr> 
+					<td> Buy Price: </td>
+					<td> <input type="text" id="txtSetBuyPrice" /></td>
+				</tr>
+
+				<tr> 
+					<td> Password: </td>
+					<td> <input type="password" id="txtSetPricesPassword" /></td>
+				</tr>
+
+				<tr>
+					<td> <button type="button" onClick="setPrices($('#txtSetSellPrice').val(),
+						   										  $('#txtSetBuyPrice').val(),
+						   										  $('#txtSetPricesPassword').val());">Set Prices </button>
+				</tr>
+
+			</table>
+	</div> <!-- row ends here -->
+
+	<!-- Buy Coin-->
+	<div class="row">
+		<h3> Buy IDC</h3>
+			<table class="table">
+				<tr> 
+					<td> From: </td>
+					<td> <input type="text" id="txtBuyFrom /></td>
+				</tr>
+
+				<tr> 
+					<td> Amount: </td>
+					<td> <input type="text" id="txtBuyAmount" /></td>
+				</tr>
+
+				<tr> 
+					<td> Password: </td>
+					<td> <input type="password" id="txtBuyPassword" /></td>
+				</tr>
+
+				<tr>
+					<td> <button type="button" onClick="buy($('#txtBuyAmount').val(),
+						   										  $('#txtBuyFrom').val(),
+						   										  $('#txtBuyPassword').val());">Buy</button>
+				</tr>
+
+			</table>
+	</div> <!-- row ends here -->
+
+	<!-- Sell Coin -->
+	<div class="row">
+		<h3> Sell IDC</h3>
+			<table class="table">
+				<tr> 
+					<td> From: </td>
+					<td> <input type="text" id="txtSellFrom /></td>
+				</tr>
+
+				<tr> 
+					<td> Amount: </td>
+					<td> <input type="text" id="txtSellAmount" /></td>
+				</tr>
+
+				<tr> 
+					<td> Password: </td>
+					<td> <input type="password" id="txtSellPassword" /></td>
+				</tr>
+
+				<tr>
+					<td> <button type="button" onClick="buy($('#txtSellAmount').val(),
+						   										  $('#txtSellFrom').val(),
+						   										  $('#txtSellPassword').val());">Sell</button>
+				</tr>
+
+			</table>
+	</div> <!-- row ends here -->
+
+
+</div> <!-- container ends here -->
+
+
+    
+
+    
+    
+</br></br></br></br></br>
+
+
+
+
+<div id="dvEthBal"></div>
+
+</br></br></br></br></br></br></br>
+<button type="button" onClick="getTransactions()">Check Event </button>
+<div id="txhash1"></div>
+
+<!-- Create Account -->
+Password:
+<input type="password" ng-model="password" /></td>
+	<button type="button" ng-click="createAccount(password)">Create Account</button>
+	 
+
+</br></br></br></br></br></br></br>
+<button type="button" onClick="watchLatestTx()">Check Event Latest </button>
+<div id="txhash1"></div>
+
+
+ 
