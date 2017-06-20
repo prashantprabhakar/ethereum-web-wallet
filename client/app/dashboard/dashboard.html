@@ -1,0 +1,211 @@
+
+<nav class="navbar navbar-default nav1">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<h1> ID Coin </h1>
+		</div>
+	</div>
+</nav>
+
+
+<div class="container">
+
+
+    <h3> Balance </h3>
+	 <form class="form-horizontal" name="balanceForm">
+	    <div class="form-group">
+	      <label class="control-label col-sm-2"> Account Address: </label>
+	      <div class="col-sm-6">
+	        <input type="text" ng-model="accountAddress"/>
+	      </div>
+	    </div>
+	    <div class="form-group">        
+	      <div class="col-sm-offset-2 col-sm-10">
+	        <button type="submit" class="btn btn-default" ng-click="checkEtherBalance(accountAddress); checkCoinBalance(accountAddress); openBalancePopup();"> Check </button>
+	      </div>
+	    </div>
+	 </form>
+	 <div class= "col-sm-12">
+	    <div ng-if="etherBalance" ng-show="showBalance"> Ether balance :{{etherBalance}}</div>
+		<div ng-if="coinBalance" ng-show="showBalance"> Coin balance: {{coinBalance}}</div>
+	 </div>
+
+	<h3> Create New Account </h3>
+	 <form class="form-horizontal" >
+	    <div class="form-group">
+	      <label class="control-label col-sm-2"> Password : </label>
+	      <div class="col-sm-6">
+	        <input type="password" ng-model="password" />
+	      </div>
+	    </div>
+	    <div class="form-group">        
+	      <div class="col-sm-offset-2 col-sm-10">
+	        <button type="submit" class="btn btn-default" ng-click="createAccount(password)">Create Account</button>
+	      </div>
+	    </div>
+	 </form>
+	 <div class= "col-sm-12">
+		<div ng-if="accountAddress" ng-show="showAccountAddr"> Account address is : {{accountAddress}} </div>
+	 </div>
+
+	<h3> Mint Token </h3>
+	 <form class="form-horizontal" name="mintForm">
+	    <div class="form-group">
+	      <label class="control-label col-sm-2">To :</label>
+	      <div class="col-sm-6">
+	        <input type="text" ng-model="mint.toAddress" />
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <label class="control-label col-sm-2">Amount:</label>
+	      <div class="col-sm-6">          
+	        <input type="text" ng-model="mint.amount" />
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <label class="control-label col-sm-2">From:</label>
+	      <div class="col-sm-6">          
+	        <input type="text" placeholder="Owner" disabled />
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <label class="control-label col-sm-2">Password:</label>
+	      <div class="col-sm-6">          
+	        <input type="password" ng-model="mint.password" />
+	      </div>
+	    </div>
+	    <div class="form-group">        
+	      <div class="col-sm-offset-2 col-sm-10">
+	        <!-- <button type="submit" class="btn btn-default" ng-click="mintToken(mint.toAddress,mint.amount,mint.password); openMintPopup()">Mint Token </button> -->
+	        <button type="submit" class="btn btn-default" ng-click="openMintPopup()">Mint Token </button>
+	      </div>
+	    </div>
+	 </form>
+
+
+	<h3>Transfer IDC</h3>
+	 <form class="form-horizontal" name="transferForm" >
+	    <div class="form-group">
+	      <label class="control-label col-sm-2">To :</label>
+	      <div class="col-sm-6">
+	        <input type="text" ng-model="transfer.toAddr" />
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <label class="control-label col-sm-2">Amount:</label>
+	      <div class="col-sm-6">          
+	        <input type="text" ng-model="transfer.amount" />
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <label class="control-label col-sm-2">From:</label>
+	      <div class="col-sm-6">          
+	        <input type="text" ng-model="transfer.fromAddr" />
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <label class="control-label col-sm-2">Password:</label>
+	      <div class="col-sm-6">          
+	        <input type="password" ng-model="transfer.password" />
+	      </div>
+	    </div>
+	    <div class="form-group">        
+	      <div class="col-sm-offset-2 col-sm-10">
+	        <button type="submit" class="btn btn-default" ng-click="openTransferCoinPopUp()"> Transfer </button>
+	      </div>
+	    </div>
+	 </form>
+
+	<h3> Set Prices</h3>
+	 <form class="form-horizontal" >
+	    <div class="form-group">
+	      <label class="control-label col-sm-2">Sell Price :</label>
+	      <div class="col-sm-6">
+	        <input type="text" ng-model="newSp" />
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <label class="control-label col-sm-2">Buy Price: </label>
+	      <div class="col-sm-6">          
+	        <input type="text" ng-model="newBp" />
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <label class="control-label col-sm-2">Password:</label>
+	      <div class="col-sm-6">          
+	        <input type="password" ng-model="setPricePassword" />
+	      </div>
+	    </div>
+	    <div class="form-group">        
+	      <div class="col-sm-offset-2 col-sm-10">
+	        <button type="submit" class="btn btn-default" ng-click="setPrices(newSp,newBp,setPricePassword)">Set Prices </button>
+	      </div>
+	    </div>
+	 </form>
+
+	<h3>Buy IDC</h3>
+	 <form class="form-horizontal" >
+	    <div class="form-group">
+	      <label class="control-label col-sm-2"> From:</label>
+	      <div class="col-sm-6">
+	        <input type="text" ng-model="buyFrmAddr" />
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <label class="control-label col-sm-2"> Amount: </label>
+	      <div class="col-sm-6">          
+	        <input type="text" ng-model="buyEther" />
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <label class="control-label col-sm-2">Password:</label>
+	      <div class="col-sm-6">          
+	        <input type="password" ng-model="buyPassword" />
+	      </div>
+	    </div>
+	    <div class="form-group">        
+	      <div class="col-sm-offset-2 col-sm-10">
+	        <button type="submit" class="btn btn-default" ng-click="buy(buyFrmAddr,buyEther,buyPassword);">Buy</button>
+	      </div>
+	    </div>
+	 </form>
+
+	<h3> Sell IDC </h3>
+	 <form class="form-horizontal">
+	    <div class="form-group">
+	      <label class="control-label col-sm-2"> From:</label>
+	      <div class="col-sm-6">
+	        <input type="text" ng-model="sellAddrFrm" />
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <label class="control-label col-sm-2"> Amount: </label>
+	      <div class="col-sm-6">          
+	        <input type="text" ng-model="sellAmount"/>
+	      </div>
+	    </div>
+	    <div class="form-group">
+	      <label class="control-label col-sm-2">Password:</label>
+	      <div class="col-sm-6">          
+	        <input type="password" ng-model="sellPassword" />
+	      </div>
+	    </div>
+	    <div class="form-group">        
+	      <div class="col-sm-offset-2 col-sm-10">
+	        <button type="submit" class="btn btn-default" ng-click="sell(sellAddrFrm,sellAmount,sellPassword)">Sell</button>
+	      </div>
+	    </div>
+	 </form>
+
+
+</div> <!-- container ends here -->
+
+
+    
+
+    
+    
+</br></br></br></br></br>
+
+
+ 

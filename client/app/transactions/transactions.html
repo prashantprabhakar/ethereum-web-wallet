@@ -1,0 +1,39 @@
+<nav class="navbar navbar-default nav1">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<h1> ID Coin </h1>
+		</div>
+	</div>
+</nav>
+
+<div class="container">
+	<div class="row">
+	 	<div class="col-sm-12">
+	 		<table class = "table table-hover table-striped table-responsive table-bordered">
+	 			<thead>
+	 				<tr>
+		 				<th class="col-sm-8"> Transaction Hash </th>
+		 				<th class="col-sm-4"> Status 
+		 					<select  ng-init="status=''" ng-model="status" ng-change="getTransactions()" style="float: right;">
+				<option value="">All</option>
+				<option value="Success"> Success </option>
+				<option value="Pending"> Pending </option>
+			</select>
+		 				</th>
+		 			</tr>
+	 			</thead>
+	 			<tbody>
+	 				<tr ng-repeat="transaction in transactions ">
+	 					<td class="col-sm-8">{{transaction.transactionid}} </td>
+	 					<td class="col-sm-4"> {{transaction.status}} </td>
+	 				</tr>
+	 			</tbody>
+	 		</table>
+	 	</div>
+	</div>
+	<ul uib-pagination total-items="transactionCount" max-size="2" items-per-page="2" ng-model="currentPage" ng-change="pageChanged()"></ul>
+</div
+
+
+
+ 

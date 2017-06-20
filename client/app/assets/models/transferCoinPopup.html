@@ -1,0 +1,49 @@
+<div class="content simple">
+	<div class="row">
+		<div class="col-sm-6">
+			<h4> Pleasse verify details: </h4>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-2">
+			<p> To : </p>
+		</div>
+		<div class="col-sm-6">
+			{{transfer.toAddr}}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-2">
+			<p> Amount : </p>
+		</div>
+		<div class="col-sm-6">
+			{{transfer.amount}}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-2">
+			<p> From : </p>
+		</div>
+		<div class="col-sm-6">
+			{{transfer.fromAddr}}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-3">
+			<button ng-click="closeAllPopup()">Close </button>
+		</div>
+		<div class="col-sm-3">
+			<button ng-click="transferCoin(transfer.toAddr,transfer.amount,transfer.fromAddr,transfer.password);"> Confirm </button>
+		</div>
+	</div>
+</div>
+
+
+<style>
+	.simple{
+		padding-left: 20px;
+		padding-top: 15px;
+		padding-bottom: 15px;
+	}
+	
+</style>
